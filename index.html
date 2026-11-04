@@ -173,7 +173,8 @@
   .pledge-list li::before{ content:'✓'; position:absolute; left:0; color:var(--blue); font-weight:600; }
   .pledge-qty{ font-size:12px; color:var(--mid-gray); margin-bottom:14px; }
   .pledge-qty b{ color:var(--ink); }
-  .pledge-btn{ text-align:center; padding:11px; border-radius:980px; font-size:14px; font-weight:500; background:var(--canvas); color:var(--ink); }
+  .pledge-btn{ display:block; cursor:pointer; transition:transform .15s ease, filter .15s ease; text-align:center; padding:11px; border-radius:980px; font-size:14px; font-weight:500; background:var(--canvas); color:var(--ink); }
+  .pledge-btn:hover{ filter:brightness(.94); transform:translateY(-1px); }
   .pledge-card.featured .pledge-btn{ background:var(--blue); color:#fff; }
   .pledge-card.limited .pledge-btn{ background:var(--ember); color:#fff; }
 
@@ -252,7 +253,7 @@
     .hero-badge{ width:78px; }
     .hero-badge span{ font-size:11px; }
     .side-scroll-hint{ display:none; }
-    .feature-grid{ justify-content:center; } .feature-grid > div:last-child{ display:none; }
+    .feature-grid{ justify-content:center; } .feature-grid{ gap:32px; } .feature-grid > div{ max-width:100%; } .feature-media-frame, .risks-photo-frame, .founder-photo-frame{ display:block; width:100%; max-width:440px; margin-left:auto; margin-right:auto; } .risks-list, .founder-text-block{ max-width:100%; width:100%; }
     .value-grid-8{ grid-template-columns:repeat(2,1fr); }
     .nav-links{ display:none; }
     .band{ padding:56px 20px; }
@@ -341,6 +342,10 @@
   /* FOUNDER */
   .founder-text-block{ max-width:480px; }
   .founder-photo-frame{ border-radius:24px; overflow:hidden; width:340px; aspect-ratio:4/5; box-shadow:0 24px 60px -16px rgba(0,0,0,0.16); flex-shrink:0; }
+  @media (max-width:820px){
+    .feature-media-frame, .risks-photo-frame, .founder-photo-frame{ width:100%; max-width:440px; }
+    .risks-list, .founder-text-block{ max-width:100%; }
+  }
 </style>
 </head>
 <body>
@@ -537,7 +542,7 @@
     <div class="video-frame reveal reveal-d2" style="margin-top:48px;">
       <div class="video-frame-inner">
         <iframe
-          src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+          src="https://www.youtube.com/embed/qojO-o4zTA4"
           title="How we built the ION Hoodie"
           style="position:absolute; inset:0; width:100%; height:100%; border:0;"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -612,7 +617,7 @@
           <li>Backer-only updates</li>
           <li>Our thanks, genuinely</li>
         </ul>
-        <a href="#" class="pledge-btn">Select reward</a>
+        <a href="#rewards" class="pledge-btn" data-tier="25" data-stripe="">Select reward</a>
       </div>
 
       <div class="pledge-card featured reveal reveal-d2">
@@ -629,7 +634,7 @@
           <li>First production run</li>
           <li>Estimated delivery: Dec 2026</li>
         </ul>
-        <a href="#" class="pledge-btn">Select reward</a>
+        <a href="store.html#buy" class="pledge-btn" data-tier="399" data-stripe="">Select reward</a>
       </div>
 
       <div class="pledge-card reveal reveal-d3">
@@ -644,7 +649,7 @@
           <li>Priority Access to future limited releases</li>
         </ul>
         <p class="pledge-desc" style="margin-top:14px; margin-bottom:0;">You can increase your pledge if you'd like to support ION with more.</p>
-        <a href="#" class="pledge-btn">Select reward</a>
+        <a href="#rewards" class="pledge-btn" data-tier="1000" data-stripe="">Select reward</a>
       </div>
     </div>
   </div>
@@ -764,6 +769,26 @@
   </div>
 </section>
 
+<!-- PROMO VIDEO -->
+<section class="band band-white" id="promo-video" style="padding-top:40px;">
+  <div class="wrap">
+    <div class="kicker center" style="text-align:center;">Promo</div>
+    <div class="section-header reveal center" style="margin:0 auto 8px; text-align:center;">See It in Action.</div>
+
+    <div class="video-frame reveal reveal-d2" style="margin-top:48px;">
+      <div class="video-frame-inner">
+        <iframe
+          src="https://www.youtube.com/embed/deZIEuu-8Gg"
+          title="ION Hoodie promo video"
+          style="position:absolute; inset:0; width:100%; height:100%; border:0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-band band-gray">
   <div class="wrap">
@@ -789,6 +814,15 @@
 </footer>
 
 <script>
+// Pledge buttons: put a Stripe Payment Link in data-stripe to activate a tier.
+document.querySelectorAll('.pledge-btn[data-tier]').forEach(function(b){
+  b.addEventListener('click', function(e){
+    var url=b.getAttribute('data-stripe');
+    if(url){ e.preventDefault(); window.location.href=url; }
+    else if(b.getAttribute('href')==='#rewards'){ e.preventDefault(); }
+  });
+});
+
 
 
   const revealEls = document.querySelectorAll('.reveal');
