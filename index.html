@@ -638,8 +638,8 @@
 
       <div class="pledge-card featured reveal reveal-d2">
         <div class="pledge-name">Choose Your Amount</div>
-        <div class="pledge-price">Your amount</div>
-        <div class="pledge-tagline">I want to help more.</div>
+        <div class="pledge-price">Any Amount</div>
+        <div class="pledge-tagline">I choose how to support.</div>
         <p class="pledge-desc">Decide how much you would like to contribute. Every amount helps move ION forward.</p>
         <ul class="pledge-list">
           <li>You enter the amount you wish to give</li>
@@ -650,7 +650,7 @@
       </div>
     </div>
 
-    <p class="support-status" id="support-status" role="status" hidden>Contributions are not open yet. Please check back soon.</p>
+    <p class="support-status" id="support-status" role="status" hidden>Contributions are temporarily unavailable while we finalize our payment setup.</p>
     <p class="support-disclaimer reveal">Your contribution supports the development of ION wearable technology. Contributions are voluntary and do not include products, rewards, equity, or financial returns. ECO IDEA LLC is a for-profit company, and contributions are not tax-deductible charitable donations. See our <a href="terms.html">Terms &amp; Refund Policy</a>.</p>
   </div>
 </section>
@@ -822,7 +822,7 @@
 
 <script>
 // Support buttons: put a Stripe Payment Link in data-stripe to activate a button.
-// Until a link is set, the button only shows a "not open yet" message.
+// Until a link is set, the button only shows a "temporarily unavailable" message.
 document.querySelectorAll('.pledge-btn[data-support]').forEach(function(b){
   b.addEventListener('click', function(e){
     e.preventDefault();
