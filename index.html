@@ -354,14 +354,26 @@
     .risks-list, .founder-text-block{ max-width:100%; }
   }
 
-  /* Support section (two cards) */
-  .support-grid{ grid-template-columns:repeat(2,1fr); max-width:820px; margin-left:auto; margin-right:auto; }
-  .support-grid .pledge-price{ line-height:1.2; }
-  .support-status{ max-width:720px; margin:22px auto 0; text-align:center; font-size:14px; font-weight:500; color:var(--ink); background:var(--paper); border:0.5px solid var(--hairline); border-radius:14px; padding:12px 16px; }
-  .support-status[hidden]{ display:none; }
-  .support-disclaimer{ max-width:720px; margin:26px auto 0; text-align:center; font-size:13px; line-height:1.6; color:var(--mid-gray); }
+  /* Support section (reward blocks) */
+  .tier-list{ max-width:960px; margin:0 auto; }
+  .tier-row{ display:grid; grid-template-columns:120px 1fr 300px; gap:36px; align-items:center; padding:36px 0; border-top:1px solid var(--hairline); }
+  .tier-row:first-child{ border-top:none; }
+  .tier-price{ font-size:26px; font-weight:600; letter-spacing:-0.02em; color:var(--ink); }
+  .tier-name{ font-size:21px; font-weight:600; line-height:1.25; letter-spacing:-0.01em; color:var(--ink); margin-bottom:10px; }
+  .tier-meta{ font-size:14px; line-height:1.55; color:var(--mid-gray); margin-bottom:14px; }
+  .tier-points{ list-style:none; margin:0 0 22px; padding:0; }
+  .tier-points li{ position:relative; padding-left:18px; font-size:15px; line-height:1.5; color:var(--deep-gray); margin-bottom:6px; }
+  .tier-points li::before{ content:""; position:absolute; left:2px; top:0.62em; width:6px; height:6px; border-radius:50%; background:var(--blue); }
+  .tier-btn{ display:inline-block; background:var(--blue); color:#fff; font-size:15px; font-weight:500; border-radius:980px; padding:10px 22px; cursor:pointer; }
+  .tier-btn:hover{ opacity:.9; }
+  .tier-media img{ display:block; width:100%; height:auto; border-radius:18px; box-shadow:0 10px 30px rgba(0,0,0,0.12); }
+  .support-disclaimer{ max-width:720px; margin:34px auto 0; text-align:center; font-size:13px; line-height:1.6; color:var(--mid-gray); }
   .support-disclaimer a{ color:var(--link-blue); border-bottom:1px solid var(--link-blue); }
-  @media (max-width:820px){ .support-grid{ grid-template-columns:1fr; max-width:440px; } }
+  @media (max-width:820px){
+    .tier-row{ grid-template-columns:1fr; gap:14px; padding:30px 0; }
+    .tier-media{ order:-1; }
+    .tier-price{ font-size:24px; }
+  }
 </style>
 </head>
 <body>
@@ -376,7 +388,7 @@
     <a href="index.html#behind-the-scenes">Video</a>
     <a href="index.html#about">Founder</a>
   </div>
-  <a href="#support" class="nav-cta">Support ION</a>
+  <a href="#support" class="nav-cta js-support">Support Us</a>
 </nav>
 
 <!-- HERO -->
@@ -411,7 +423,7 @@
   </div>
 
   <div class="hero-cta-row">
-    <a href="#support" class="pill-btn">Support ION</a>
+    <a href="#support" class="pill-btn js-support">Support Us on Kickstarter</a>
     <a href="#behind-the-scenes" class="pill-btn-outline pill-btn-pulse">Watch Video</a>
   </div>
 
@@ -620,38 +632,42 @@
 <section class="band band-white" id="support">
   <div class="wrap">
     <div class="section-header reveal center" style="margin:0 auto 8px; text-align:center;">Support ION.</div>
-    <p class="section-sub reveal reveal-d1 center" style="margin:0 auto 40px; text-align:center; max-width:640px;">Help us develop ION wearable technology with a voluntary contribution. Choose a fixed amount or pick your own.</p>
+    <p class="section-sub reveal reveal-d1 center" style="margin:0 auto 40px; text-align:center; max-width:640px;">Choose your reward and back the project on our campaign page.</p>
 
-    <div class="pledge-grid support-grid">
-      <div class="pledge-card reveal reveal-d1">
-        <div class="pledge-name">Support ION</div>
-        <div class="pledge-price">$25</div>
-        <div class="pledge-tagline">I believe in it.</div>
-        <p class="pledge-desc">A fixed, one-time voluntary contribution toward the development of ION.</p>
-        <ul class="pledge-list">
-          <li>Fixed amount: $25</li>
-          <li>Supports engineering and development</li>
-          <li>Voluntary: no product or reward included</li>
-        </ul>
-        <a href="#support" class="pledge-btn" data-support="fixed-25" data-stripe="">Contribute $25</a>
+    <div class="tier-list">
+      <div class="tier-row reveal">
+        <div class="tier-price">$25</div>
+        <div class="tier-info">
+          <div class="tier-name">ION First Access</div>
+          <div class="tier-meta">Estimated delivery: Dec 2029<br>Ships anywhere in the world</div>
+          <ul class="tier-points"><li>Priority access to future drops</li><li>Early invitations to limited editions</li><li>Project updates &amp; behind-the-scenes</li></ul>
+          <a href="#support" class="tier-btn js-support" data-toast>Support on Kickstarter</a>
+        </div>
+        <div class="tier-media"><img src="assets/tier-first-access.jpg" alt="ION First Access List, $25 reward" loading="lazy"></div>
       </div>
-
-      <div class="pledge-card featured reveal reveal-d2">
-        <div class="pledge-name">Choose Your Amount</div>
-        <div class="pledge-price">Any Amount</div>
-        <div class="pledge-tagline">I choose how to support.</div>
-        <p class="pledge-desc">Decide how much you would like to contribute. Every amount helps move ION forward.</p>
-        <ul class="pledge-list">
-          <li>You enter the amount you wish to give</li>
-          <li>Supports engineering and development</li>
-          <li>Voluntary: no product or reward included</li>
-        </ul>
-        <a href="#support" class="pledge-btn" data-support="custom" data-stripe="">Choose Amount</a>
+      <div class="tier-row reveal">
+        <div class="tier-price">$399</div>
+        <div class="tier-info">
+          <div class="tier-name">ION Hoodie — Wearable Digital Display</div>
+          <div class="tier-meta">Estimated delivery: Dec 2029<br>Ships anywhere in the world</div>
+          <ul class="tier-points"><li>One ION Hoodie with a wearable digital display</li></ul>
+          <a href="#support" class="tier-btn js-support" data-toast>Support on Kickstarter</a>
+        </div>
+        <div class="tier-media"><img src="assets/tier-hoodie.jpg" alt="ION Hoodie in beige and black with a wearable digital display" loading="lazy"></div>
+      </div>
+      <div class="tier-row reveal">
+        <div class="tier-price">$1,000+</div>
+        <div class="tier-info">
+          <div class="tier-name">ION VIP Supporter</div>
+          <div class="tier-meta">Estimated delivery: Dec 2029<br>Ships anywhere in the world</div>
+          <ul class="tier-points"><li>ION First Access</li><li>One ION Hoodie</li><li>Free invitations to ION events</li><li>15% discount on future ION products</li><li>VIP project updates</li></ul>
+          <a href="#support" class="tier-btn js-support" data-toast>Support on Kickstarter</a>
+        </div>
+        <div class="tier-media"><img src="assets/tier-vip.jpg" alt="ION VIP Circle, $1,000+ reward" loading="lazy"></div>
       </div>
     </div>
 
-    <p class="support-status" id="support-status" role="status" hidden>Contributions are temporarily unavailable while we finalize our payment setup.</p>
-    <p class="support-disclaimer reveal">Your contribution supports the development of ION wearable technology. Contributions are voluntary and do not include products, rewards, equity, or financial returns. ECO IDEA LLC is a for-profit company, and contributions are not tax-deductible charitable donations. See our <a href="terms.html">Terms &amp; Refund Policy</a>.</p>
+    <p class="support-disclaimer reveal">Rewards, estimated delivery dates, and terms are as described on our campaign page and may change as development progresses. Payments are handled by the crowdfunding platform, not by this website. ECO IDEA LLC is a for-profit company, and contributions are not tax-deductible charitable donations. See our <a href="terms.html">Terms &amp; Refund Policy</a>.</p>
   </div>
 </section>
 
@@ -751,28 +767,28 @@
       <div class="faq-a">Yes. The display is removable, so the hoodie can also be worn normally without it.</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q">What does my contribution support? <span class="plus">+</span></div>
-      <div class="faq-a">Your contribution supports the development of ION wearable technology: engineering, components, the companion app, testing, and preparation for production.</div>
+      <div class="faq-q">How do I support ION? <span class="plus">+</span></div>
+      <div class="faq-a">Press any "Support" button on this site. It takes you to our campaign page on Kickstarter, where you choose a reward and complete your pledge. This website does not process payments.</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q">Do I receive a product or reward? <span class="plus">+</span></div>
-      <div class="faq-a">No. Contributions are voluntary and do not include products, rewards, equity, or financial returns. A contribution does not reserve, pre-order, or entitle you to a hoodie.</div>
+      <div class="faq-q">What rewards are available? <span class="plus">+</span></div>
+      <div class="faq-a">ION First Access ($25), ION Hoodie — Wearable Digital Display ($399), and ION VIP Supporter ($1,000+). Details of each reward are listed above and on the campaign page.</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q">How much can I contribute? <span class="plus">+</span></div>
-      <div class="faq-a">Choose "Support ION" for a fixed contribution of $25, or "Choose Your Amount" to enter any amount you wish.</div>
+      <div class="faq-q">When will rewards be delivered? <span class="plus">+</span></div>
+      <div class="faq-a">Estimated delivery is December 2029. This is a current estimate, not a guarantee. ION is a hardware project in development, and timelines may change. We will keep supporters updated at every major stage.</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q">Is my contribution tax-deductible? <span class="plus">+</span></div>
-      <div class="faq-a">No. ECO IDEA LLC is a for-profit company, and contributions are not tax-deductible charitable donations.</div>
+      <div class="faq-q">When am I charged? <span class="plus">+</span></div>
+      <div class="faq-a">Kickstarter campaigns are all-or-nothing. You are only charged if the project reaches its funding goal by the campaign deadline.</div>
     </div>
     <div class="faq-item reveal">
       <div class="faq-q">Can I get a refund? <span class="plus">+</span></div>
-      <div class="faq-a">Yes, within 48 hours of payment. Email <a href="mailto:iontechad@gmail.com" style="color:var(--link-blue); border-bottom:1px solid var(--link-blue);">iontechad@gmail.com</a> with your payment confirmation. After 48 hours, refunds may be declined except where required by law. See the <a href="terms.html" style="color:var(--link-blue); border-bottom:1px solid var(--link-blue);">Terms &amp; Refund Policy</a>.</div>
+      <div class="faq-a">Pledges are processed on the campaign platform, so refunds and cancellations follow the platform's terms and applicable law. If you need help, write to <a href="mailto:iontechad@gmail.com" style="color:var(--link-blue); border-bottom:1px solid var(--link-blue);">iontechad@gmail.com</a>. See also our <a href="terms.html" style="color:var(--link-blue); border-bottom:1px solid var(--link-blue);">Terms &amp; Refund Policy</a>.</div>
     </div>
     <div class="faq-item reveal">
-      <div class="faq-q">Is ION Hoodie available to buy? <span class="plus">+</span></div>
-      <div class="faq-a">Not yet. ION Hoodie is in development and is not available for purchase or pre-order. Contributions made here do not reserve a product.</div>
+      <div class="faq-q">Is my pledge tax-deductible? <span class="plus">+</span></div>
+      <div class="faq-a">No. ECO IDEA LLC is a for-profit company, and pledges are not tax-deductible charitable donations.</div>
     </div>
   </div>
 </section>
@@ -802,7 +818,7 @@
   <div class="wrap">
     <h2 class="reveal">Be Among the First.</h2>
     <p class="sub-copy reveal reveal-d1">Every new idea starts with a few people willing to believe in it early. With your support, we can complete the final engineering, scale production, and bring ION Hoodie to life.</p>
-    <a href="#support" class="pill-btn reveal reveal-d2">Support ION</a>
+    <a href="#support" class="pill-btn reveal reveal-d2 js-support">Support Us on Kickstarter</a>
     <p class="sub-copy reveal reveal-d2" style="margin-top:20px;">Thank you for helping us take the next step.</p>
   </div>
 </section>
@@ -812,27 +828,16 @@
     <div class="footer-top">
       <div class="nav-logo">ION Hoodie</div>
             <div class="footer-links"><span style="font-size:12px;color:var(--deep-gray);">This project is fully U.S. patented.</span>
+        <a href="#support" class="js-support">Support Us</a>
         <a href="terms.html">Terms &amp; Refund Policy</a>
         <a href="privacy.html">Privacy &amp; Data Policy</a></div>
     </div>
-        <p class="footer-legal">ION Hoodie is an independent hardware project by ECO IDEA LLC. This page is not a crowdfunding platform, but you can also support us here directly with a voluntary contribution. Product details may change as development progresses.</p>
+        <p class="footer-legal">ION Hoodie is an independent hardware project by ECO IDEA LLC. This website was created to promote the project and to connect with potential partners. It is not a crowdfunding platform and does not process payments. You can support the project on our campaign page on Kickstarter. Product details and delivery dates may change as development progresses.</p>
     <p class="footer-legal" style="margin-top:10px;">We're open to interesting collaborations and partnerships, and happy to talk with potential customers. Write to us at <a href="mailto:iontechad@gmail.com" style="color:var(--link-blue); border-bottom:1px solid var(--link-blue);">iontechad@gmail.com</a>.</p>
   </div>
 </footer>
 
 <script>
-// Support buttons: put a Stripe Payment Link in data-stripe to activate a button.
-// Until a link is set, the button only shows a "temporarily unavailable" message.
-document.querySelectorAll('.pledge-btn[data-support]').forEach(function(b){
-  b.addEventListener('click', function(e){
-    e.preventDefault();
-    var url=b.getAttribute('data-stripe');
-    if(url){ window.location.href=url; return; }
-    var st=document.getElementById('support-status');
-    if(st){ st.hidden=false; }
-  });
-});
-
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -914,5 +919,6 @@ document.querySelectorAll('.pledge-btn[data-support]').forEach(function(b){
   
 </script>
 
+<script src="campaign.js" defer></script>
 </body>
 </html>

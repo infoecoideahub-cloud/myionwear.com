@@ -1,13 +1,11 @@
 # ION Hoodie
 
-Static site (no build step).
+Static site (no build step), deployed with GitHub Pages.
 
-- `index.html` — main page, including the "Support ION" section (two voluntary-contribution buttons)
-- `terms.html` — Terms & Refund Policy
-- `privacy.html` — Privacy & Data Policy
+- `index.html` — main page with the "Support ION" reward blocks
+- `campaign.js` — **set the campaign page URL here** (`window.ION_CAMPAIGN_URL`). All "Support" buttons use it.
+  While it is empty, the reward buttons show "Our campaign page is not live yet", and the other buttons scroll to the support section.
+- `assets/` — reward images
+- `terms.html`, `privacy.html` — legal pages
 - `store.html` — old purchase page, now only redirects to `index.html#support`
-
-To activate a contribution button later, put a Stripe Payment Link into its `data-stripe` attribute in `index.html`
-(`data-support="fixed-25"` and `data-support="custom"`). Until then the buttons only show "Contributions are temporarily unavailable..."
-
-Deploy with GitHub Pages: Settings → Pages → Deploy from branch → `main` / root.
+- `hoodie-frames/` — animation frames and GIF for use on the campaign page

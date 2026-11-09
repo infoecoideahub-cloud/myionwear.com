@@ -1,0 +1,24 @@
+<!-- ION Hoodie: removable display animation. Pure HTML + CSS, no scripts. -->
+<style>
+.ion-hoodie-anim{position:relative;width:100%;max-width:520px;aspect-ratio:963/774;margin:0 auto;}
+.ion-hoodie-anim img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;
+  animation-duration:4.1s;animation-iteration-count:infinite;animation-timing-function:step-end;}
+.ion-hoodie-anim img:first-child{opacity:1;}
+@keyframes ion-f1{0%{opacity:1}24.39%{opacity:0}100%{opacity:0}}
+@keyframes ion-f2{0%{opacity:0}24.39%{opacity:1}32.93%{opacity:0}100%{opacity:0}}
+@keyframes ion-f3{0%{opacity:0}32.93%{opacity:1}41.46%{opacity:0}100%{opacity:0}}
+@keyframes ion-f4{0%{opacity:0}41.46%{opacity:1}58.54%{opacity:0}100%{opacity:0}}
+@keyframes ion-f5{0%{opacity:0}58.54%{opacity:1}67.07%{opacity:0}100%{opacity:0}}
+@keyframes ion-f6{0%{opacity:0}67.07%{opacity:1}75.61%{opacity:0}100%{opacity:0}}
+@keyframes ion-f7{0%{opacity:0}75.61%{opacity:1}100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.ion-hoodie-anim img{animation:none;}.ion-hoodie-anim img:not(:first-child){display:none;}}
+</style>
+<div class="ion-hoodie-anim">
+  <img src="https://myionwear.com/hoodie-frames/frame-1.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f1">
+  <img src="https://myionwear.com/hoodie-frames/frame-2.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f2">
+  <img src="https://myionwear.com/hoodie-frames/frame-3.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f3">
+  <img src="https://myionwear.com/hoodie-frames/frame-4.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f4">
+  <img src="https://myionwear.com/hoodie-frames/frame-5.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f5">
+  <img src="https://myionwear.com/hoodie-frames/frame-6.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f6">
+  <img src="https://myionwear.com/hoodie-frames/frame-7.png" alt="ION Hoodie removable display" loading="eager" style="animation-name:ion-f7">
+</div>
